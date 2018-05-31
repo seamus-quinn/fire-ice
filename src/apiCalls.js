@@ -1,18 +1,17 @@
-export const fetchData = () => {
+export const fetchData = (populateData) => {
   const url= `http://localhost:3001/api/v1/houses`;
   const method = {
     method: 'GET'
   }
-  const houses = fetch(url, method)
-    .then(response => response.json())
+  fetch(url, method)
+    .then(response => {
+      console.log(response)
+      return response.json()
+    })
     .then(data => {
-      console.log(data)
-      return data;
+      populateData(data);
     })
     .catch(error => console.log(error))
-  const wow = houses.resolve();
-  console.log(wow, 'woooooo')
-  return houses
 }
 
 export const fetchHouses = async () => {
