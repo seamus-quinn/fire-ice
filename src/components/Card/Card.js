@@ -3,7 +3,7 @@ import React from 'react';
 const Card = (props) => {
   const { name, founded, seats, titles, coatOfArms, ancestralWeapons, words} = props;
   return (
-    <div>
+    <div className='Card'>
       <h1>{name}</h1>
       <h2>{founded}</h2>
       <h3>{seats}</h3>

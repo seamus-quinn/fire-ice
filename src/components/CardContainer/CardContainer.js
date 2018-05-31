@@ -17,7 +17,7 @@ const CardContainer = (props) => {
     )
   })
   return (
-    <div>
+    <div className='Container'>
       {cards}
     </div>
   )
