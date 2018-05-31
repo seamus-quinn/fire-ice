@@ -11,17 +11,25 @@ class Card extends Component {
   }
 
   addSwornMembers = () => {
-    apiCalls.fetchSwornMembers(this.props.swornMembers)
-      .then(swornMembers => this.setState({ swornMembers }))
+    if(!this.state.swornMembers.length){
+      apiCalls.fetchSwornMembers(this.props.swornMembers)
+        .then(swornMembers => this.setState({ swornMembers }))
+    } else {
+      this.setState({ swornMembers: []})
+    }
   }
 
   render() {
-    const { name, founded, seats, titles, coatOfArms, ancestralWeapons, words, swornMembers } = this.props;
-    const members = this.state.swornMembers.map(member => {
-      return(
-        <p>{member.name}</p>
-      )
+    const { name, founded, seats, titles, coatOfArms, ancestralWeapons, words } = this.props;
+
+    const members = this.state.swornMembers.map((member, index) => {
+      return <span key={index}>{member.name}, </span>
     })
+
+    const titleDisplay = titles.map((title, index) => {
+      return <span key={index}>{title}, </span>
+    })
+
     return(
       <div
         className='Card'
@@ -29,12 +37,12 @@ class Card extends Component {
       >
         <h1>{name}</h1>
         <h2>{founded}</h2>
-        <h3>{seats}</h3>
-        <h4>{titles}</h4>
-        <h5>{coatOfArms}</h5>
-        <h6>{ancestralWeapons}</h6>
-        <h6>{words}</h6>
-        <div>{members}</div>
+        <p>Seats: {seats}</p>
+        <p>Titles: {titleDisplay}</p>
+        <p>Coat of Arms: {coatOfArms}</p>
+        <p>Ancestral Weapons: {ancestralWeapons}</p>
+        <p>Motto: {words}</p>
+        <p>{members}</p>
       </div>
     )
   }

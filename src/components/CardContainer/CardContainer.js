@@ -7,13 +7,13 @@ const CardContainer = (props) => {
   if(!props.houses.length){
     return(
       <div>
-        <img src={loading} />
+        <img src={loading} alt='a wolf running majestically' />
       </div>
     )
   }
-  const cards = props.houses.map(house => {
+  const cards = props.houses.map((house, index) => {
     return (
-      <Card {...house}/>
+      <Card key={index} {...house}/>
     )
   })
   return (
