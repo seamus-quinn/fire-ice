@@ -17,6 +17,11 @@ class Card extends Component {
 
   render() {
     const { name, founded, seats, titles, coatOfArms, ancestralWeapons, words, swornMembers } = this.props;
+    const members = this.state.swornMembers.map(member => {
+      return(
+        <p>{member.name}</p>
+      )
+    })
     return(
       <div
         className='Card'
@@ -29,6 +34,7 @@ class Card extends Component {
         <h5>{coatOfArms}</h5>
         <h6>{ancestralWeapons}</h6>
         <h6>{words}</h6>
+        <div>{members}</div>
       </div>
     )
   }
