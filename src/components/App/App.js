@@ -13,8 +13,8 @@ import CardContainer from '../CardContainer/CardContainer'
 class App extends Component {
 
   componentDidMount() {
-    apiCalls.fetchData(this.props.populateHouses)
-    console.log('wow')
+    apiCalls.fetchData()
+      .then(data => this.props.populateHouses(data))
   }
 
   render() {
